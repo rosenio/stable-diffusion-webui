@@ -23,9 +23,13 @@ psutil
 pytorch_lightning
 requests
 resize-right
+tokenizers>=0.14.1
 
 safetensors
 scikit-image>=0.19
 tomesd
-transformers==4.30.2
+torch
+torchdiffeq
+torchsde
+transformers>=4.36
 pillow-avif-plugin==1.4.3
