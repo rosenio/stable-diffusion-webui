@@ -44,7 +44,7 @@ fi
 # python3 executable
 if [[ -z "${python_cmd}" ]]
 then
-  python_cmd="python3.10"
+  python_cmd="python3.11"
 fi
 if [[ ! -x "$(command -v "${python_cmd}")" ]]
 then
@@ -201,7 +201,7 @@ else
     printf "\n%s\n" "${delimiter}"
     printf "Clone stable-diffusion-webui"
     printf "\n%s\n" "${delimiter}"
-    "${GIT}" clone https://github.com/AUTOMATIC1111/stable-diffusion-webui.git "${clone_dir}"
+    "${GIT}" clone https://github.com/rosenio/stable-diffusion-webui.git "${clone_dir}"
     cd "${clone_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/%s/, aborting...\e[0m" "${install_dir}" "${clone_dir}"; exit 1; }
 fi
 
@@ -213,8 +213,7 @@ then
     cd "${install_dir}"/"${clone_dir}"/ || { printf "\e[1m\e[31mERROR: Can't cd to %s/%s/, aborting...\e[0m" "${install_dir}" "${clone_dir}"; exit 1; }
     if [[ ! -d "${venv_dir}" ]]
     then
-        "${python_cmd}" -m venv "${venv_dir}"
-        "${venv_dir}"/bin/python -m pip install --upgrade pip
+        uv sync 
         first_launch=1
     fi
     # shellcheck source=/dev/null
@@ -222,7 +221,6 @@ then
     then
         source "${venv_dir}"/bin/activate
         # ensure use of python from venv
-        python_cmd="${venv_dir}"/bin/python
     else
         printf "\n%s\n" "${delimiter}"
         printf "\e[1m\e[31mERROR: Cannot activate python venv, aborting...\e[0m"
