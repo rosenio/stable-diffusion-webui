@@ -1,5 +1,5 @@
 [project]
-name = "stable-diffusion-webui"
+name = "stable_diffusion_webui"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
