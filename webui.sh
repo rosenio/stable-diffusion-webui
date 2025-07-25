@@ -41,14 +41,14 @@ then
     clone_dir="stable-diffusion-webui"
 fi
 
-# python3 executable
+# python executable
 if [[ -z "${python_cmd}" ]]
 then
-  python_cmd="python3.11"
+  python_cmd="python.11"
 fi
 if [[ ! -x "$(command -v "${python_cmd}")" ]]
 then
-  python_cmd="python3"
+  python_cmd="python"
 fi
 
 # git executable
@@ -59,7 +59,7 @@ else
     export GIT_PYTHON_GIT_EXECUTABLE="${GIT}"
 fi
 
-# python3 venv without trailing slash (defaults to ${install_dir}/${clone_dir}/venv)
+# python venv without trailing slash (defaults to ${install_dir}/${clone_dir}/venv)
 if [[ -z "${venv_dir}" ]] && [[ $use_venv -eq 1 ]]
 then
     venv_dir="venv"
@@ -188,7 +188,7 @@ done
 if [[ $use_venv -eq 1 ]] && ! "${python_cmd}" -c "import venv" &>/dev/null
 then
     printf "\n%s\n" "${delimiter}"
-    printf "\e[1m\e[31mERROR: python3-venv is not installed, aborting...\e[0m"
+    printf "\e[1m\e[31mERROR: python-venv is not installed, aborting...\e[0m"
     printf "\n%s\n" "${delimiter}"
     exit 1
 fi
